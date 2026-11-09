@@ -1,10 +1,10 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-config";
 import PageHero from "@/components/ui/PageHero";
 import OurStory from "@/components/about/OurStory";
 import Values from "@/components/about/Values";
 import Services from "@/components/Home/Services";
 import InfiniteTape from "@/components/InfiniteTape";
-export const metadata: Metadata = { title: "About" };
+export const metadata = pageMetadata("About", "Meet the strategists, designers, and makers behind Magpie Services.", "/about");
 export default function AboutPage() {
   return (
     <main>

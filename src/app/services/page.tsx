@@ -1,8 +1,8 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-config";
 import PageHero from "@/components/ui/PageHero";
 import ServiceDetails from "@/components/services/ServiceDetails";
 import Process from "@/components/services/Process";
-export const metadata: Metadata = { title: "Services" };
+export const metadata = pageMetadata("Services", "Explore digital marketing, creative production, performance campaigns, and offline brand activations from Magpie Services.", "/services");
 export default function ServicesPage() {
   return (
     <main>

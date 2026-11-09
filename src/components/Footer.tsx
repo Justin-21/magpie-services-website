@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { navigation } from "@/data/site";
+import { navigation, legalNavigation } from "@/data/site";
 export default function Footer() {
   return (
     <footer className="site-footer">
@@ -29,6 +29,9 @@ export default function Footer() {
         <div className="footer-wordmark">
           magpie services<span>®</span>
         </div>
+        <nav className="footer-legal" aria-label="Legal navigation">
+          {legalNavigation.map(item => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+        </nav>
         <div className="footer-bottom">
           <span>© {new Date().getFullYear()} Magpie Services</span>
           <span>Built on ideas. Driven by people.</span>

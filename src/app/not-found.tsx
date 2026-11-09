@@ -1,4 +1,7 @@
+import type { Metadata } from "next";
 import ActionLink from "@/components/ui/ActionLink";
+export const metadata: Metadata = { title: "Page not found", robots: { index: false, follow: false } };
+
 export default function NotFound() {
   return (
     <main className="container section not-found">

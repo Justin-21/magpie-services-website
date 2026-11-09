@@ -7,6 +7,8 @@ import {
 } from "next/font/google";
 import "./globals.css";
 import Footer from "@/components/Footer";
+import { siteUrl, isPreviewSite } from "@/lib/site-config";
+import MotionEnhancements from "@/components/ui/MotionEnhancements";
 import ThemeProvider from "@/components/theme/ThemeProvider";
 
 const themeInitScript = `(()=>{try{const t=localStorage.getItem('magpie-theme');const d=t==='dark'||(t!=='light'&&matchMedia('(prefers-color-scheme: dark)').matches);document.documentElement.classList.toggle('dark',d);document.documentElement.style.colorScheme=d?'dark':'light'}catch{}})()`;
@@ -29,6 +31,8 @@ const specialGothic = Special_Gothic_Expanded_One({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL(siteUrl),
+  robots: { index: !isPreviewSite, follow: !isPreviewSite },
   title: {
     default: "Magpie Services — Ideas into impact",
     template: "%s | Magpie Services",
@@ -53,6 +57,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           Skip to content
         </a>
         <ThemeProvider>
+          <MotionEnhancements />
           <Navbar />
           <div id="main-content" tabIndex={-1}>
             {children}

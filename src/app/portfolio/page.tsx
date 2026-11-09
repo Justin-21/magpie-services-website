@@ -1,7 +1,7 @@
-import type { Metadata } from "next";
+import { pageMetadata } from "@/lib/site-config";
 import PageHero from "@/components/ui/PageHero";
 import ProjectGallery from "@/components/portfolio/ProjectGallery";
-export const metadata: Metadata = { title: "Portfolio" };
+export const metadata = pageMetadata("Portfolio", "Explore creative concept studies across branding, campaigns, and content.", "/portfolio");
 export default function PortfolioPage() {
   return (
     <main>

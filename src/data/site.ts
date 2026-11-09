@@ -5,55 +5,53 @@ export const navigation = [
   { href: "/portfolio", label: "Portfolio" },
   { href: "/contact", label: "Contact" },
 ];
+// Source: “What We Do”, page 4 of the Magpie Services Canva deck.
 export const services = [
   {
-    title: "Plan",
-    subtitle: "Marketing planning & coordination",
+    id: "digital-marketing",
+    title: "Digital Marketing",
+    subtitle: "Creative production, social presence & performance",
     description:
-      "A clear direction before the first creative. We connect your business goals with audience insights, campaign planning, and a practical roadmap.",
-    tags: ["Brand strategy", "Audience research", "Campaign planning"],
-    image: "photo-1522071820081-009f0129c71c",
-  },
-  {
-    title: "Create",
-    subtitle: "Creative & production requirements",
-    description:
-      "Ideas made tangible. From brand identity and campaign design to print and production, we create work that feels unmistakably yours.",
-    tags: ["Brand identity", "Design", "Print & production"],
-    image: "photo-1542744094-3a31f272c490",
-  },
-  {
-    title: "Activate",
-    subtitle: "On-ground marketing activities",
-    description:
-      "Bring your brand into the real world with thoughtful experiences, consumer engagement, and coordinated on-ground activations.",
-    tags: ["Brand activation", "Events", "Consumer engagement"],
-    image: "photo-1492684223066-81342ee5ff30",
-  },
-  {
-    title: "Visibilize",
-    subtitle: "Retail & outdoor presence",
-    description:
-      "Show up where it matters. We help brands create a consistent presence across retail, outdoor, transit, and traditional media.",
-    tags: ["Outdoor media", "Retail branding", "Transit"],
-    image: "photo-1519501025264-65ba15a82390",
-  },
-  {
-    title: "Grow",
-    subtitle: "Digital marketing & content production",
-    description:
-      "Turn attention into a lasting connection through social strategy, content production, paid campaigns, and creator collaborations.",
-    tags: ["Social media", "Content", "Paid campaigns"],
+      "Build a strong digital presence with social media, performance marketing, and creative production. We connect strategy and creativity to help your brand earn attention, engage its audience, and grow.",
+    tags: ["Content production", "Social media", "Performance marketing"],
     image: "photo-1557838923-2985c318be48",
+    offerings: [
+      "Advertisement Video Shoots",
+      "Product Video Shoots",
+      "UGC Video Shoots",
+      "Product Photography",
+      "Social Media Management",
+      "Graphic Designing",
+      "Post-Production & Video Editing",
+      "Website Designing & Management",
+      "Meta Ads & Performance Marketing",
+      "Influencer Marketing",
+      "Celebrity Collaboration Videos",
+      "Amazon, Flipkart & Meesho Marketing",
+    ],
   },
   {
-    title: "Coordinate",
-    subtitle: "Multi-city campaign execution",
+    id: "offline-marketing",
+    title: "Offline Marketing",
+    subtitle: "On-ground experiences, branding & activations",
     description:
-      "One connected team from idea to rollout. We coordinate production, field teams, and campaign delivery across locations.",
-    tags: ["Project management", "Field teams", "Campaign rollout"],
-    image: "photo-1521737711867-e3b97375f902",
+      "Bring your brand closer to people through on-ground campaigns, retail branding, print, and promotional activities. We coordinate every touchpoint to strengthen your brand’s visibility and create impactful experiences.",
+    tags: ["Brand activations", "Retail & transit", "Print production"],
+    image: "photo-1492684223066-81342ee5ff30",
+    offerings: [
+      "RWA Activations",
+      "D2D Campaigns",
+      "Retail Branding",
+      "Cab Branding",
+      "Mall & IT Park Activations",
+      "Print & Offset Branding",
+    ],
   },
+];
+export const serviceOptions = services.flatMap(service => [service.title, ...service.offerings]);
+export const legalNavigation = [
+  { href: "/privacy-policy", label: "Privacy Policy" },
+  { href: "/terms-and-conditions", label: "Terms & Conditions" },
 ];
 export const projects = [
   {

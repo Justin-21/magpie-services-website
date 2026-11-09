@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { services, imageUrl } from "@/data/site";
 import SectionHeading from "../ui/SectionHeading";
+import ServiceOfferings from "./ServiceOfferings";
 import ActionLink from "../ui/ActionLink";
 export default function ServiceDetails() {
   return (
@@ -8,12 +9,12 @@ export default function ServiceDetails() {
       <SectionHeading label="Our capabilities">
         A connected approach.
         <br />
-        <em>From plan to presence.</em>
+        <em>Digital to on-ground.</em>
       </SectionHeading>
       <div className="service-details">
         {services.map((service, index) => (
           <article
-            id={service.title.toLowerCase()}
+            id={service.id}
             key={service.title}
             className="service-detail"
           >
@@ -25,6 +26,7 @@ export default function ServiceDetails() {
               <p className="eyebrow">{service.subtitle}</p>
               <h2>{service.title}</h2>
               <p className="muted">{service.description}</p>
+              <ServiceOfferings offerings={service.offerings} linked />
               <div className="tags">
                 {service.tags.map((tag) => (
                   <span key={tag}>{tag}</span>

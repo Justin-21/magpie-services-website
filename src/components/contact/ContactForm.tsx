@@ -80,8 +80,11 @@ export default function ContactForm({
               <option value="" disabled>
                 Select a service
               </option>
-              {services.map((item) => (
-                <option key={item.title}>{item.title}</option>
+              {services.map(item => (
+                <optgroup key={item.id} label={item.title}>
+                  <option value={item.title}>{item.title} — full service</option>
+                  {item.offerings.map(offering => <option key={offering} value={offering}>{offering}</option>)}
+                </optgroup>
               ))}
               <option>Let’s figure it out together</option>
             </select>

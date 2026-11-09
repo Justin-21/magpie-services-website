@@ -38,7 +38,8 @@ export default function Navbar() {
           </button>
         </div>
       </div>
-      {open && (
+      <div className="mobile-nav-shell" data-open={open} aria-hidden={!open} inert={!open}>
+        <div className="mobile-nav-inner">
         <nav
           id="mobile-navigation"
           className="mobile-nav container"
@@ -59,7 +60,8 @@ export default function Navbar() {
             </Link>
           ))}
         </nav>
-      )}
+        </div>
+      </div>
     </header>
   );
 }
