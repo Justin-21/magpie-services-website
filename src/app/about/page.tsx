@@ -1,13 +1,24 @@
-import React from "react";
-
-const AboutPage = () => {
+import { pageMetadata } from "@/lib/site-config";
+import PageHero from "@/components/ui/PageHero";
+import OurStory from "@/components/about/OurStory";
+import Values from "@/components/about/Values";
+import Services from "@/components/Home/Services";
+import InfiniteTape from "@/components/InfiniteTape";
+export const metadata = pageMetadata("About", "Meet the strategists, designers, and makers behind Magpie Services.", "/about");
+export default function AboutPage() {
   return (
-    <main className="flex flex-col flex-1 items-center justify-center bg-zinc-50 font-sans dark:bg-black min-h-screen">
-      <div className="flex flex-1 w-full h-screen flex-col items-center justify-center bg-radial-[65%_100%_at_0%_0%] from-black from-0% via-[#A5002C] via-45% to-[#FD652B] to-100%">
-        About Page
-      </div>
+    <main>
+      <PageHero
+        label="About us"
+        title="Connecting marketing ideas with"
+        emphasis="practical execution."
+        description="A collective of digital strategists, designers, and storytellers dedicated to helping ambitious brands find their voice — and put it into action."
+        image="photo-1521737711867-e3b97375f902"
+      />
+      <OurStory />
+      <InfiniteTape items={["Creative", "Agency", "Connected", "Ideas"]} />
+      <Services />
+      <Values />
     </main>
   );
-};
-
-export default AboutPage;
+}

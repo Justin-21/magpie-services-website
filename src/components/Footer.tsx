@@ -1,28 +1,43 @@
-import React from "react";
-
-const Footer = () => {
+import Link from "next/link";
+import { navigation, legalNavigation } from "@/data/site";
+export default function Footer() {
   return (
-    <div className="w-full bg-accent h-full max-h-1/2 flex flex-col items-center gap-16 pt-16 overflow-clip mt-16 text-background">
-      <div className="flex items-start justify-between w-full max-w-7xl">
-        <div>Got a query?</div>
-        <div>Email</div>
-        <div>
-          <ul>
-            <li>Home</li>
-            <li>About</li>
-            <li>Services</li>
-            <li>Portfolio</li>
-            <li>Contact Us</li>
-            <li>Terms &amp; Conditions</li>
-            <li>Privacy Policy</li>
-          </ul>
+    <footer className="site-footer">
+      <div className="container">
+        <div className="footer-top">
+          <div>
+            <p className="eyebrow">Have something in mind?</p>
+            <Link href="/contact" className="footer-cta">
+              Let’s make
+              <br />
+              some noise. <span>↗</span>
+            </Link>
+          </div>
+          <div className="footer-note">
+            Good ideas deserve
+            <br />
+            great execution.<p>Strategy. Creativity. Impact.</p>
+          </div>
+          <nav aria-label="Footer navigation">
+            {navigation.map((item) => (
+              <Link key={item.href} href={item.href}>
+                {item.label}
+              </Link>
+            ))}
+          </nav>
+        </div>
+        <div className="footer-wordmark">
+          magpie services<span>®</span>
+        </div>
+        <nav className="footer-legal" aria-label="Legal navigation">
+          {legalNavigation.map(item => <Link key={item.href} href={item.href}>{item.label}</Link>)}
+        </nav>
+        <div className="footer-bottom">
+          <span>© {new Date().getFullYear()} Magpie Services</span>
+          <span>Built on ideas. Driven by people.</span>
+          <a href="#top">Back to top ↑</a>
         </div>
       </div>
-      <div className="translate-y-2/6 -mt-32">
-        <span className="text-[13vw] font-medium">Magpie Services</span>
-      </div>
-    </div>
+    </footer>
   );
-};
-
-export default Footer;
+}

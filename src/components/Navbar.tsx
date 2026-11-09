@@ -1,140 +1,67 @@
 "use client";
-
-import { cn } from "@/lib/utils";
-import { motion } from "motion/react";
-import Link from "next/link";
 import { usePathname } from "next/navigation";
-import { useEffect, useState } from "react";
-import { MdDarkMode, MdLightMode } from "react-icons/md";
-
-const itemVariants = {
-  open: {
-    opacity: 1,
-    y: 0,
-    transition: {
-      when: "beforeChildren",
-    },
-  },
-  closed: {
-    opacity: 0,
-    y: -15,
-    transition: {
-      when: "afterChildren",
-    },
-  },
-};
-
-const themeStorageKey = "magpie-theme";
-
-const Navbar = () => {
-  const [darkMode, setDarkMode] = useState(false);
-
-  useEffect(() => {
-    const storedTheme = window.localStorage.getItem(themeStorageKey);
-    const prefersDark = window.matchMedia(
-      "(prefers-color-scheme: dark)",
-    ).matches;
-    const isDark = storedTheme ? storedTheme === "dark" : prefersDark;
-
-    document.documentElement.classList.toggle("dark", isDark);
-
-    const timer = window.setTimeout(() => setDarkMode(isDark), 0);
-    return () => window.clearTimeout(timer);
-  }, []);
-
-  const toggleTheme = () => {
-    const nextDarkMode = !darkMode;
-
-    setDarkMode(nextDarkMode);
-    document.documentElement.classList.toggle("dark", nextDarkMode);
-    window.localStorage.setItem(
-      themeStorageKey,
-      nextDarkMode ? "dark" : "light",
-    );
-  };
-
-  return (
-    <motion.div
-      initial={{
-        y: -10,
-        opacity: 0,
-      }}
-      animate={{
-        y: 0,
-        opacity: 1,
-      }}
-      className="w-full bg-background text-foreground font-manrope place-items-center py-3 transition-colors"
-    >
-      <div className="max-w-7xl w-full flex items-center justify-between">
-        <div className="flex items-center justify-center gap-3">
-          <div className="w-10 h-10 bg-foreground rounded-xl" />
-          <h1 className="font-bold">MagpieServices</h1>
-        </div>
-
-        <ul className="flex items-center justify-center gap-2">
-          <NavLink href="/" text="Home" />
-          <NavLink href="/about" text="About" />
-          <NavLink href="/services" text="Services" />
-          <NavLink href="/portfolio" text="Portfolio" />
-          <NavLink href="/contact" text="Contact" />
-          <li>
-            <button
-              type="button"
-              onClick={toggleTheme}
-              className="flex items-center justify-center rounded-full border border-neutral-400 p-2 transition-colors hover:border-foreground cursor-pointer"
-              aria-label={`Switch to ${darkMode ? "light" : "dark"} theme`}
-              title={`Switch to ${darkMode ? "light" : "dark"} theme`}
-            >
-              {darkMode ? <MdLightMode size={16} /> : <MdDarkMode size={16} />}
-            </button>
-          </li>
-        </ul>
-      </div>
-    </motion.div>
-  );
-};
-
-export default Navbar;
-
-const NavLink = ({
-  text,
-  href,
-  className,
-}: {
-  text?: string;
-  href: string;
-  className?: string;
-}) => {
+import Link from "next/link";
+import { useState } from "react";
+import Brand from "./ui/Brand";
+import ThemeToggle from "./theme/ThemeToggle";
+import { navigation } from "@/data/site";
+export default function Navbar() {
   const pathname = usePathname();
-  const isActive = pathname === href;
-
+  const [open, setOpen] = useState(false);
   return (
-    <motion.li
-      variants={itemVariants}
-      className={cn(
-        "flex items-center justify-center gap-2 px-2.5 py-2",
-        "rounded-full border border-neutral-400",
-        "transition-all cursor-pointer text-sm font-semibold leading-none",
-        "hover:border-foreground",
-        className,
-      )}
-    >
-      {isActive && (
-        <motion.div
-          initial={{
-            opacity: 0,
-            scale: 0,
+    <header className="site-header">
+      <div className="container header-inner">
+        <Brand />
+        <nav className="desktop-nav" aria-label="Main navigation">
+          {navigation.map((item) => (
+            <Link
+              className={`nav-link ${pathname === item.href ? "active" : ""}`}
+              key={item.href}
+              href={item.href}
+              aria-current={pathname === item.href ? "page" : undefined}
+            >
+              {pathname === item.href && <span aria-hidden="true">↗</span>}
+              {item.label}
+            </Link>
+          ))}
+        </nav>
+        <div className="header-actions">
+          <ThemeToggle />
+          <button
+            className="icon-button menu-button"
+            onClick={() => setOpen(!open)}
+            aria-expanded={open}
+            aria-controls="mobile-navigation"
+            aria-label={open ? "Close menu" : "Open menu"}
+          >
+            {open ? "×" : "☰"}
+          </button>
+        </div>
+      </div>
+      <div className="mobile-nav-shell" data-open={open} aria-hidden={!open} inert={!open}>
+        <div className="mobile-nav-inner">
+        <nav
+          id="mobile-navigation"
+          className="mobile-nav container"
+          aria-label="Mobile navigation"
+          onKeyDown={(event) => {
+            if (event.key === "Escape") setOpen(false);
           }}
-          animate={{
-            opacity: 1,
-            scale: 1,
-          }}
-          className="size-1.5 rounded-full bg-foreground"
-        />
-      )}
-      <Link href={href} aria-current={isActive ? "page" : undefined}>
-        {text}
-      </Link>
-    </motion.li>
+        >
+          {navigation.map((item) => (
+            <Link
+              key={item.href}
+              href={item.href}
+              onClick={() => setOpen(false)}
+              aria-current={pathname === item.href ? "page" : undefined}
+            >
+              {item.label}
+              <span>↗</span>
+            </Link>
+          ))}
+        </nav>
+        </div>
+      </div>
+    </header>
   );
-};
+}
