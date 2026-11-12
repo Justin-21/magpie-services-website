@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import Link from "next/link";
+import ActionLink from "../ui/ActionLink";
 import { legalUpdated, hasPlaceholderContact } from "@/lib/site-config";
 
 export type LegalSection = { id: string; title: string; content: ReactNode };
@@ -49,9 +49,7 @@ export default function LegalPage({
               {section.content}
             </section>
           ))}
-          <Link href="/" className="text-link">
-            Back to home <span aria-hidden="true">↗</span>
-          </Link>
+          <ActionLink href="/" subtle>Back to home</ActionLink>
         </div>
       </div>
     </main>

@@ -11,7 +11,7 @@ export default function LegalContact() {
         </p>
       ) : (
         <a className="text-link" href={`mailto:${contactEmail}`}>
-          {contactEmail}
+          <span className="action-label">{contactEmail}</span>
         </a>
       )}
     </div>

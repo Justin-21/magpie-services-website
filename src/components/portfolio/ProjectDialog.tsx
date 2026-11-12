@@ -47,7 +47,7 @@ export default function ProjectDialog({
         height={600}
       />
       <div className="dialog-content">
-        <p className="eyebrow">Concept study / {project.category}</p>
+        <p className="eyebrow">Concept study / {project.channel}</p>
         <h2 id="project-title">{project.title}</h2>
         <p>{project.description}</p>
         <p className="muted">

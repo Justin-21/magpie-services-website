@@ -8,7 +8,7 @@ export const navigation = [
 // Source: “What We Do”, page 4 of the Magpie Services Canva deck.
 export const services = [
   {
-    id: "digital-marketing",
+    id: "digital-marketing" as const,
     title: "Digital Marketing",
     subtitle: "Creative production, social presence & performance",
     description:
@@ -31,7 +31,7 @@ export const services = [
     ],
   },
   {
-    id: "offline-marketing",
+    id: "offline-marketing" as const,
     title: "Offline Marketing",
     subtitle: "On-ground experiences, branding & activations",
     description:
@@ -56,8 +56,9 @@ export const legalNavigation = [
 export const projects = [
   {
     slug: "everyday-identity",
+    workType: "Graphic Designs",
+    channel: "Offline",
     title: "An identity for the everyday",
-    category: "Branding",
     discipline: "Brand identity / Art direction",
     image: "photo-1602143407151-7111542de6e8",
     color: "#d7d8c8",
@@ -66,8 +67,9 @@ export const projects = [
   },
   {
     slug: "culture-in-motion",
+    workType: "Experiential Campaigns",
+    channel: "Offline",
     title: "Culture in motion",
-    category: "Campaigns",
     discipline: "Campaign concept / Experience",
     image: "photo-1492684223066-81342ee5ff30",
     color: "#dabbd9",
@@ -76,8 +78,9 @@ export const projects = [
   },
   {
     slug: "a-fresh-perspective",
+    workType: "Photography",
+    channel: "Online",
     title: "A fresh perspective",
-    category: "Content",
     discipline: "Content direction / Photography",
     image: "photo-1542744094-3a31f272c490",
     color: "#ead1aa",
@@ -86,8 +89,9 @@ export const projects = [
   },
   {
     slug: "the-city-is-yours",
+    workType: "Outdoor Campaigns",
+    channel: "Offline",
     title: "The city is yours",
-    category: "Campaigns",
     discipline: "Outdoor / Brand activation",
     image: "photo-1519501025264-65ba15a82390",
     color: "#bac5d5",
@@ -96,8 +100,9 @@ export const projects = [
   },
   {
     slug: "made-to-connect",
+    workType: "Graphic Designs",
+    channel: "Online",
     title: "Made to connect",
-    category: "Branding",
     discipline: "Strategy / Visual identity",
     image: "photo-1522071820081-009f0129c71c",
     color: "#c9d0b5",
@@ -106,8 +111,9 @@ export const projects = [
   },
   {
     slug: "behind-the-story",
+    workType: "Social Content",
+    channel: "Online",
     title: "Behind the story",
-    category: "Content",
     discipline: "Social strategy / Storytelling",
     image: "photo-1521737711867-e3b97375f902",
     color: "#e1c5b6",

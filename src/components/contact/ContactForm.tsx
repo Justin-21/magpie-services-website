@@ -131,7 +131,8 @@ export default function ContactForm({
               Download brief ↓
             </button>
             <button className="text-link" onClick={copy}>
-              Copy brief ↗
+              <span className="action-label">Copy brief</span>
+              <span aria-hidden="true">↗</span>
             </button>
           </div>
         </section>

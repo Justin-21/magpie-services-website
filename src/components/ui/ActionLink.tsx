@@ -11,7 +11,7 @@ export default function ActionLink({
 }) {
   return (
     <Link href={href} className={subtle ? "text-link" : "action-link"}>
-      {children}
+      <span className="action-label">{children}</span>
       <span aria-hidden="true">↗</span>
     </Link>
   );
