@@ -22,7 +22,7 @@ export default function MotionEnhancements() {
       if (preference.matches || !("IntersectionObserver" in window)) return;
       elements = Array.from(
         document.querySelectorAll<HTMLElement>(
-          ".section-heading, .hero-card, .intro-image, .capabilities > div, .consulting-card, .service-detail, .values-grid article, .process-grid article, .contact-intro, .contact-form-wrap, .legal-content > section, .footer-top",
+          ".section-heading, .hero-card, .intro-image, .capabilities > div, .consulting-card, [data-reveal-on-scroll], .values-grid article, .contact-intro, .contact-form-wrap, .legal-content > section, .footer-top",
         ),
       );
       observer = new IntersectionObserver(

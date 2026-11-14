@@ -1,4 +1,3 @@
-import "./portfolio.css";
 import { pageMetadata } from "@/lib/site-config";
 import PageHero from "@/components/ui/PageHero";
 import CaseStudies from "@/components/portfolio/CaseStudies";
